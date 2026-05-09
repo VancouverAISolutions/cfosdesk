@@ -1,8 +1,8 @@
 import { useState, useMemo } from 'react'
 
-// âââââââââââââââââââââââââââââââââââââââââââââ
+// ─────────────────────────────────────────────
 // MOCK DATA
-// âââââââââââââââââââââââââââââââââââââââââââââ
+// ─────────────────────────────────────────────
 
 const FRANCHISES = [
   { id: 1, name: 'Sunrise Learning Centre', location: 'Vancouver, BC', revenue: 48500, quality: 94, training: 98, health: 'Green', trend: '+12%', trendUp: true },
@@ -58,9 +58,9 @@ const MESSAGES = [
   { id: 2, sender: 'Downtown Discovery', subject: 'Curriculum Materials Delay', category: 'Curriculum', priority: 'High', time: '9:14 AM', status: 'awaiting-hq', body: 'Hello,\n\nOur Spring 2026 curriculum kit was expected to arrive by April 28th but still has not been delivered. We have three classes scheduled this week that rely on these materials.\n\nCan you provide an updated tracking number or expedite a replacement shipment?\n\nUrgently,\nDowntown Discovery' },
   { id: 3, sender: 'Westside Scholars', subject: 'Staff Training Schedule Request', category: 'Training', priority: 'Normal', time: 'Yesterday', status: 'awaiting-hq', body: 'Hi,\n\nWe recently hired two new teachers and would like to schedule them for the standard onboarding training program. They are available starting May 15th.\n\nPlease let us know which session dates work and what materials they should pre-read.\n\nThanks,\nWestside Scholars' },
   { id: 4, sender: 'HQ Operations', subject: 'Q3 Marketing Campaign Assets Ready', category: 'Marketing', priority: 'Normal', time: 'Yesterday', status: 'awaiting-franchisee', body: 'Dear Franchise Partners,\n\nThe Q3 marketing campaign assets are now ready for download in the resource portal. This includes social media templates, flyers, and email copy for the Back-to-School promotion.\n\nPlease confirm receipt and planned launch dates by May 15th.\n\nBest,\nHQ Marketing Team' },
-  { id: 5, sender: 'HQ Finance', subject: 'Annual Audit Documents Due May 31', category: 'Operations', priority: 'High', time: 'May 7', status: 'awaiting-franchisee', body: 'Important Reminder,\n\nThis is a reminder that annual financial audit documentation is due by May 31, 2026. Please ensure you submit:\n\nâ¢ Certified P&L statements\nâ¢ Bank reconciliation reports\nâ¢ Lease agreements (if updated)\n\nSubmit via the secure portal. Late submissions incur a $500 administrative fee.\n\nHQ Finance' },
+  { id: 5, sender: 'HQ Finance', subject: 'Annual Audit Documents Due May 31', category: 'Operations', priority: 'High', time: 'May 7', status: 'awaiting-franchisee', body: 'Important Reminder,\n\nThis is a reminder that annual financial audit documentation is due by May 31, 2026. Please ensure you submit:\n\n• Certified P&L statements\n• Bank reconciliation reports\n• Lease agreements (if updated)\n\nSubmit via the secure portal. Late submissions incur a $500 administrative fee.\n\nHQ Finance' },
   { id: 6, sender: 'Maple Academy', subject: 'Re: Enrollment Software Issue Resolved', category: 'Technical', priority: 'Normal', time: 'May 6', status: 'resolved', body: 'Hi Support,\n\nThank you for the quick fix! The enrollment portal is now working correctly and we were able to complete all pending registrations.\n\nWe appreciate the fast response.\n\nBest,\nMaple Academy' },
-  { id: 7, sender: 'Ridgewood Learning', subject: 'New Lease Agreement â Approved', category: 'Operations', priority: 'Normal', time: 'May 5', status: 'resolved', body: 'Hello,\n\nWe have reviewed the updated lease terms for our new location at 4521 Macleod Trail SE and are pleased to move forward. We will sign by end of week.\n\nThank you for your support throughout the process.\n\nRidgewood Learning Management' },
+  { id: 7, sender: 'Ridgewood Learning', subject: 'New Lease Agreement — Approved', category: 'Operations', priority: 'Normal', time: 'May 5', status: 'resolved', body: 'Hello,\n\nWe have reviewed the updated lease terms for our new location at 4521 Macleod Trail SE and are pleased to move forward. We will sign by end of week.\n\nThank you for your support throughout the process.\n\nRidgewood Learning Management' },
 ]
 
 const COURSES = [
@@ -116,7 +116,7 @@ const SOP_DATA = {
   Teaching: [
     { id: 1, title: 'Morning Class Setup Protocol', category: 'Teaching', steps: [
       { id: 1, text: 'Arrive 30 minutes before class start time', photo: false },
-      { id: 2, text: 'Verify classroom temperature is between 68â72Â°F', photo: false },
+      { id: 2, text: 'Verify classroom temperature is between 68–72°F', photo: false },
       { id: 3, text: 'Set up all manipulatives per the lesson plan', photo: true },
       { id: 4, text: 'Prepare student name tags and seating arrangement', photo: false },
       { id: 5, text: 'Test all audio/visual equipment and projector', photo: false },
@@ -176,9 +176,9 @@ const QC_HISTORY = [
   { date: 'Apr 3, 2026', classType: 'Math Explorers', status: 'Approved', rating: 5, comment: 'Outstanding lesson delivery and classroom management.' },
 ]
 
-// âââââââââââââââââââââââââââââââââââââââââââââ
+// ─────────────────────────────────────────────
 // HELPER COMPONENTS
-// âââââââââââââââââââââââââââââââââââââââââââââ
+// ─────────────────────────────────────────────
 
 function HealthBadge({ health }) {
   const cls = health === 'Green' ? 'badge badge-green' : health === 'Yellow' ? 'badge badge-yellow' : 'badge badge-red'
@@ -216,7 +216,7 @@ function Stars({ rating, onChange }) {
       {[1,2,3,4,5].map(n => (
         <button key={n} onClick={() => onChange && onChange(n)}
           className={`text-xl transition-colors ${n <= rating ? 'text-amber-400' : 'text-slate-200 hover:text-amber-200'}`}>
-          â
+          ★
         </button>
       ))}
     </div>
@@ -238,7 +238,7 @@ function KpiCard({ label, value, sub, icon, trend, trendUp }) {
         <span className="text-2xl">{icon}</span>
         {trend && (
           <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${trendUp ? 'bg-emerald-100 text-emerald-700' : 'bg-red-100 text-red-700'}`}>
-            {trendUp ? 'â' : 'â'} {trend}
+            {trendUp ? '↑' : '↓'} {trend}
           </span>
         )}
       </div>
@@ -319,9 +319,9 @@ function RatingSlider({ label, value, onChange }) {
   )
 }
 
-// âââââââââââââââââââââââââââââââââââââââââââââ
+// ─────────────────────────────────────────────
 // HQ MODULE 1: NETWORK ANALYTICS
-// âââââââââââââââââââââââââââââââââââââââââââââ
+// ─────────────────────────────────────────────
 
 function NetworkAnalytics() {
   const [dateRange, setDateRange] = useState('12months')
@@ -350,10 +350,10 @@ function NetworkAnalytics() {
 
       {/* KPI Cards */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <KpiCard label="Active Franchises" value="8" sub="2 under performance review" icon="ð«" trend="2 new YTD" trendUp={true}/>
-        <KpiCard label="Monthly Revenue" value={`$${(totalRev/1000).toFixed(0)}K`} sub="Combined network revenue" icon="ð°" trend="11%" trendUp={true}/>
-        <KpiCard label="Avg Quality Score" value={`${avgQuality}/100`} sub="Network-wide average" icon="â­" trend="4pts" trendUp={true}/>
-        <KpiCard label="Training Completion" value={`${avgTraining}%`} sub="Required courses only" icon="ð" trend="8%" trendUp={true}/>
+        <KpiCard label="Active Franchises" value="8" sub="2 under performance review" icon="🏫" trend="2 new YTD" trendUp={true}/>
+        <KpiCard label="Monthly Revenue" value={`$${(totalRev/1000).toFixed(0)}K`} sub="Combined network revenue" icon="💰" trend="11%" trendUp={true}/>
+        <KpiCard label="Avg Quality Score" value={`${avgQuality}/100`} sub="Network-wide average" icon="⭐" trend="4pts" trendUp={true}/>
+        <KpiCard label="Training Completion" value={`${avgTraining}%`} sub="Required courses only" icon="🎓" trend="8%" trendUp={true}/>
       </div>
 
       {/* Revenue Chart */}
@@ -418,9 +418,9 @@ function NetworkAnalytics() {
   )
 }
 
-// âââââââââââââââââââââââââââââââââââââââââââââ
+// ─────────────────────────────────────────────
 // HQ MODULE 2: QUALITY CONTROL REVIEW
-// âââââââââââââââââââââââââââââââââââââââââââââ
+// ─────────────────────────────────────────────
 
 function QualityControlReview() {
   const [filter, setFilter] = useState('All')
@@ -464,15 +464,15 @@ function QualityControlReview() {
               <div className="flex items-center justify-between px-5 py-4 cursor-pointer hover:bg-slate-50 transition-colors"
                 onClick={() => setExpanded(isExp ? null : sub.id)}>
                 <div className="flex items-center gap-4">
-                  <div className="w-9 h-9 rounded-lg bg-[#1e3a5f]/10 flex items-center justify-center text-sm">ð</div>
+                  <div className="w-9 h-9 rounded-lg bg-[#1e3a5f]/10 flex items-center justify-center text-sm">📋</div>
                   <div>
                     <div className="font-semibold text-slate-800">{sub.franchise}</div>
-                    <div className="text-xs text-slate-500 mt-0.5">{sub.classType} Â· {sub.date}</div>
+                    <div className="text-xs text-slate-500 mt-0.5">{sub.classType} · {sub.date}</div>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
                   <StatusBadge status={status}/>
-                  <span className="text-slate-400 text-lg">{isExp ? 'â²' : 'â¼'}</span>
+                  <span className="text-slate-400 text-lg">{isExp ? '▲' : '▼'}</span>
                 </div>
               </div>
 
@@ -515,10 +515,10 @@ function QualityControlReview() {
                   {/* Actions */}
                   <div className="flex gap-3">
                     <button className="btn-primary flex-1" onClick={() => { setStatuses(s=>({...s,[sub.id]:'Approved'})); setExpanded(null) }}>
-                      â Approve
+                      ✓ Approve
                     </button>
                     <button className="btn-secondary flex-1" onClick={() => { setStatuses(s=>({...s,[sub.id]:'Reviewed'})); setExpanded(null) }}>
-                      â© Request Changes
+                      ↩ Request Changes
                     </button>
                   </div>
                 </div>
@@ -528,7 +528,7 @@ function QualityControlReview() {
         })}
         {filtered.length === 0 && (
           <div className="text-center py-12 text-slate-400">
-            <div className="text-4xl mb-2">â</div>
+            <div className="text-4xl mb-2">✅</div>
             <p className="text-sm">No submissions in this category</p>
           </div>
         )}
@@ -537,9 +537,9 @@ function QualityControlReview() {
   )
 }
 
-// âââââââââââââââââââââââââââââââââââââââââââââ
+// ─────────────────────────────────────────────
 // HQ MODULE 3: MESSAGES INBOX
-// âââââââââââââââââââââââââââââââââââââââââââââ
+// ─────────────────────────────────────────────
 
 function MessagesInbox() {
   const [view, setView] = useState('awaiting-hq')
@@ -558,7 +558,7 @@ function MessagesInbox() {
           <p className="text-sm text-slate-500 mt-0.5">Franchise communication centre</p>
         </div>
         <button className="btn-primary flex items-center gap-2" onClick={() => setCompose(true)}>
-          âï¸ Compose
+          ✏️ Compose
         </button>
       </div>
 
@@ -606,7 +606,7 @@ function MessagesInbox() {
                     <h3 className="font-bold text-slate-800 text-base">{selected.subject}</h3>
                     <div className="flex items-center gap-2 mt-1.5">
                       <span className="text-sm text-slate-500">From: <strong>{selected.sender}</strong></span>
-                      <span className="text-slate-300">Â·</span>
+                      <span className="text-slate-300">·</span>
                       <span className="text-xs text-slate-400">{selected.time}</span>
                     </div>
                   </div>
@@ -631,7 +631,7 @@ function MessagesInbox() {
           ) : (
             <div className="flex-1 flex items-center justify-center text-slate-400">
               <div className="text-center">
-                <div className="text-4xl mb-2">ð¬</div>
+                <div className="text-4xl mb-2">💬</div>
                 <p className="text-sm">Select a message to read</p>
               </div>
             </div>
@@ -645,7 +645,7 @@ function MessagesInbox() {
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg">
             <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100">
               <h3 className="font-bold text-[#1e3a5f]">New Message</h3>
-              <button onClick={()=>setCompose(false)} className="text-slate-400 hover:text-slate-600 text-xl">Ã</button>
+              <button onClick={()=>setCompose(false)} className="text-slate-400 hover:text-slate-600 text-xl">×</button>
             </div>
             <div className="px-6 py-4 space-y-4">
               <div>
@@ -688,9 +688,9 @@ function MessagesInbox() {
   )
 }
 
-// âââââââââââââââââââââââââââââââââââââââââââââ
+// ─────────────────────────────────────────────
 // FRANCHISEE MODULE 4: TRAINING ACADEMY
-// âââââââââââââââââââââââââââââââââââââââââââââ
+// ─────────────────────────────────────────────
 
 function TrainingAcademy() {
   const [selectedCourse, setSelectedCourse] = useState(null)
@@ -702,11 +702,11 @@ function TrainingAcademy() {
     return (
       <div className="space-y-4">
         <button onClick={()=>setSelectedLesson(null)} className="flex items-center gap-2 text-sm text-[#1e3a5f] font-medium hover:underline">
-          â Back to Course
+          ← Back to Course
         </button>
         <div className="card">
           <h2 className="text-xl font-bold text-[#1e3a5f] mb-1">{selectedLesson}</h2>
-          <p className="text-sm text-slate-500 mb-5">{selectedCourse.title} Â· {selectedModule.title}</p>
+          <p className="text-sm text-slate-500 mb-5">{selectedCourse.title} · {selectedModule.title}</p>
           {/* Tabs */}
           <div className="flex gap-1 border-b border-slate-200 mb-5">
             {['video','about','resources','transcript'].map(t => (
@@ -725,7 +725,7 @@ function TrainingAcademy() {
           {lessonTab==='about' && (
             <div className="prose text-slate-700 text-sm leading-relaxed">
               <p>This lesson covers the essential concepts for <strong>{selectedLesson}</strong>. You will learn the core principles required for successful franchise operations and delivering outstanding educational experiences to students and families.</p>
-              <p className="mt-3">Estimated completion time: <strong>15â20 minutes</strong>. After completing this lesson, you will be assessed with a short quiz to confirm comprehension.</p>
+              <p className="mt-3">Estimated completion time: <strong>15–20 minutes</strong>. After completing this lesson, you will be assessed with a short quiz to confirm comprehension.</p>
               <div className="mt-4 p-4 bg-blue-50 rounded-lg border border-blue-100">
                 <p className="text-blue-800 font-semibold text-sm">Learning Objectives</p>
                 <ul className="mt-2 text-blue-700 text-sm space-y-1 list-disc list-inside">
@@ -741,7 +741,7 @@ function TrainingAcademy() {
               {['Lesson Handout.pdf','Reference Checklist.pdf','Quick-Start Guide.pdf'].map(f => (
                 <div key={f} className="flex items-center justify-between p-3 bg-slate-50 rounded-lg border border-slate-100">
                   <div className="flex items-center gap-3">
-                    <span className="text-lg">ð</span>
+                    <span className="text-lg">📄</span>
                     <span className="text-sm font-medium text-slate-700">{f}</span>
                   </div>
                   <button className="text-xs text-[#1e3a5f] font-medium hover:underline">Download</button>
@@ -758,7 +758,7 @@ function TrainingAcademy() {
             </div>
           )}
           <div className="mt-5 flex justify-end">
-            <button className="btn-primary">Mark Lesson Complete â</button>
+            <button className="btn-primary">Mark Lesson Complete ✓</button>
           </div>
         </div>
       </div>
@@ -770,7 +770,7 @@ function TrainingAcademy() {
     return (
       <div className="space-y-4">
         <button onClick={()=>{setSelectedCourse(null);setSelectedModule(null)}} className="flex items-center gap-2 text-sm text-[#1e3a5f] font-medium hover:underline">
-          â Back to Courses
+          ← Back to Courses
         </button>
         <div className="card">
           <div className="flex items-start gap-4">
@@ -778,7 +778,7 @@ function TrainingAcademy() {
             <div className="flex-1">
               <h2 className="text-xl font-bold text-[#1e3a5f]">{selectedCourse.title}</h2>
               <div className="flex items-center gap-3 mt-1 mb-3">
-                <span className="text-sm text-slate-500">{selectedCourse.modules} modules Â· {selectedCourse.duration}</span>
+                <span className="text-sm text-slate-500">{selectedCourse.modules} modules · {selectedCourse.duration}</span>
                 {selectedCourse.required && <span className="badge badge-red">Required</span>}
               </div>
               <ProgressBar pct={selectedCourse.progress}/>
@@ -794,7 +794,7 @@ function TrainingAcademy() {
                 onClick={() => setSelectedModule(selectedModule?.id===mod.id ? null : mod)}>
                 <div className="flex items-center gap-3">
                   <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-sm ${mod.complete?'bg-emerald-100 text-emerald-600':'bg-slate-100 text-slate-400'}`}>
-                    {mod.complete ? 'â' : `${mi+1}`}
+                    {mod.complete ? '✓' : `${mi+1}`}
                   </div>
                   <div>
                     <div className="font-semibold text-slate-800 text-sm">{mod.title}</div>
@@ -803,7 +803,7 @@ function TrainingAcademy() {
                 </div>
                 <div className="flex items-center gap-3">
                   {mod.complete ? <span className="badge badge-green">Complete</span> : <span className="badge badge-slate">In Progress</span>}
-                  <span className="text-slate-400">{selectedModule?.id===mod.id?'â²':'â¼'}</span>
+                  <span className="text-slate-400">{selectedModule?.id===mod.id?'▲':'▼'}</span>
                 </div>
               </div>
               {selectedModule?.id===mod.id && (
@@ -813,11 +813,11 @@ function TrainingAcademy() {
                       onClick={() => { setSelectedLesson(lesson); setLessonTab('video') }}>
                       <div className="flex items-center gap-3">
                         <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs ${mod.complete ? 'bg-emerald-100 text-emerald-600' : 'bg-slate-100 text-slate-400'}`}>
-                          {mod.complete ? 'â' : li+1}
+                          {mod.complete ? '✓' : li+1}
                         </span>
                         <span className="text-sm text-slate-700">{lesson}</span>
                       </div>
-                      <span className="text-xs text-[#1e3a5f] font-medium">Start â</span>
+                      <span className="text-xs text-[#1e3a5f] font-medium">Start →</span>
                     </div>
                   ))}
                 </div>
@@ -843,7 +843,7 @@ function TrainingAcademy() {
             <p className="text-3xl font-bold mt-1">64%</p>
             <p className="text-white/70 text-sm mt-1">2 of 4 required courses complete</p>
           </div>
-          <div className="text-5xl">ð</div>
+          <div className="text-5xl">🎓</div>
         </div>
         <div className="mt-4 bg-white/20 rounded-full h-2">
           <div className="bg-white h-2 rounded-full" style={{width:'64%'}}/>
@@ -857,7 +857,7 @@ function TrainingAcademy() {
               {course.required && <span className="text-xs bg-white/25 text-white px-2 py-0.5 rounded-full font-medium">Required</span>}
             </div>
             <h3 className="font-semibold text-slate-800 text-sm group-hover:text-[#1e3a5f] transition-colors leading-snug">{course.title}</h3>
-            <p className="text-xs text-slate-400 mt-1 mb-3">{course.modules} modules Â· {course.duration}</p>
+            <p className="text-xs text-slate-400 mt-1 mb-3">{course.modules} modules · {course.duration}</p>
             <ProgressBar pct={course.progress} color={course.progress===100?'bg-emerald-500':'bg-[#1e3a5f]'}/>
             <p className="text-xs text-slate-400 mt-1.5">{course.progress}% complete</p>
           </div>
@@ -867,9 +867,9 @@ function TrainingAcademy() {
   )
 }
 
-// âââââââââââââââââââââââââââââââââââââââââââââ
+// ─────────────────────────────────────────────
 // FRANCHISEE MODULE 5: SOP EXECUTION
-// âââââââââââââââââââââââââââââââââââââââââââââ
+// ─────────────────────────────────────────────
 
 function SOPExecution() {
   const [category, setCategory] = useState('Teaching')
@@ -886,18 +886,18 @@ function SOPExecution() {
     return (
       <div className="space-y-4">
         <button onClick={()=>setSelectedSOP(null)} className="flex items-center gap-2 text-sm text-[#1e3a5f] font-medium hover:underline">
-          â Back to SOPs
+          ← Back to SOPs
         </button>
         <div className="card">
           <div className="flex items-start justify-between mb-2">
             <h2 className="text-xl font-bold text-[#1e3a5f]">{selectedSOP.title}</h2>
             <span className="badge badge-blue">{selectedSOP.category}</span>
           </div>
-          <p className="text-sm text-slate-500 mb-6">{selectedSOP.steps.length} steps Â· Follow in order</p>
+          <p className="text-sm text-slate-500 mb-6">{selectedSOP.steps.length} steps · Follow in order</p>
 
           {done ? (
             <div className="text-center py-8">
-              <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center text-3xl mx-auto mb-3">â</div>
+              <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center text-3xl mx-auto mb-3">✅</div>
               <h3 className="font-bold text-emerald-700 text-lg">SOP Completed!</h3>
               <p className="text-slate-500 text-sm mt-1">Completed on May 9, 2026 at 2:34 PM</p>
               <div className="mt-4 flex gap-3 justify-center">
@@ -916,12 +916,12 @@ function SOPExecution() {
                       className={`flex items-start gap-4 p-4 rounded-xl border transition-all cursor-pointer ${checked?'bg-emerald-50 border-emerald-200':'bg-white border-slate-200 hover:border-slate-300'}`}
                       onClick={() => toggleCheck(selectedSOP.id, step.id)}>
                       <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center flex-shrink-0 mt-0.5 transition-all ${checked?'bg-emerald-500 border-emerald-500':'border-slate-300'}`}>
-                        {checked && <span className="text-white text-xs">â</span>}
+                        {checked && <span className="text-white text-xs">✓</span>}
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center gap-2">
                           <span className="text-xs font-bold text-slate-400">STEP {i+1}</span>
-                          {step.photo && <span className="text-xs bg-purple-100 text-purple-700 px-2 py-0.5 rounded-full font-medium">ð· Photo Required</span>}
+                          {step.photo && <span className="text-xs bg-purple-100 text-purple-700 px-2 py-0.5 rounded-full font-medium">📷 Photo Required</span>}
                         </div>
                         <p className={`text-sm mt-1 ${checked?'line-through text-slate-400':'text-slate-700'}`}>{step.text}</p>
                       </div>
@@ -936,7 +936,7 @@ function SOPExecution() {
                 <button className={`btn-primary ${!allChecked(selectedSOP)?'opacity-50 cursor-not-allowed':''}`}
                   disabled={!allChecked(selectedSOP)}
                   onClick={() => setCompleted(c=>({...c,[selectedSOP.id]:true}))}>
-                  Complete SOP â
+                  Complete SOP ✓
                 </button>
               </div>
             </>
@@ -971,11 +971,11 @@ function SOPExecution() {
               onClick={()=>setSelectedSOP(sop)}>
               <div className="flex items-center gap-4">
                 <div className={`w-10 h-10 rounded-xl flex items-center justify-center text-lg ${done?'bg-emerald-100':'bg-[#1e3a5f]/10'}`}>
-                  {done ? 'â' : 'ð'}
+                  {done ? '✅' : '📋'}
                 </div>
                 <div>
                   <div className="font-semibold text-slate-800">{sop.title}</div>
-                  <div className="text-xs text-slate-400 mt-0.5">{sop.steps.length} steps Â· {sop.steps.filter(s=>s.photo).length} photo steps</div>
+                  <div className="text-xs text-slate-400 mt-0.5">{sop.steps.length} steps · {sop.steps.filter(s=>s.photo).length} photo steps</div>
                   {progress > 0 && !done && (
                     <div className="flex items-center gap-2 mt-1.5">
                       <div className="w-24 bg-slate-100 rounded-full h-1.5">
@@ -988,7 +988,7 @@ function SOPExecution() {
               </div>
               <div className="flex items-center gap-3">
                 {done ? <span className="badge badge-green">Complete</span> : progress > 0 ? <span className="badge badge-blue">In Progress</span> : <span className="badge badge-slate">Not Started</span>}
-                <span className="text-slate-400 text-lg">â</span>
+                <span className="text-slate-400 text-lg">→</span>
               </div>
             </div>
           )
@@ -998,9 +998,9 @@ function SOPExecution() {
   )
 }
 
-// âââââââââââââââââââââââââââââââââââââââââââââ
+// ─────────────────────────────────────────────
 // FRANCHISEE MODULE 6: QC SUBMISSION
-// âââââââââââââââââââââââââââââââââââââââââââââ
+// ─────────────────────────────────────────────
 
 function QCSubmission() {
   const [form, setForm] = useState({ date: '', classType: 'Math Explorers', notes: '' })
@@ -1021,7 +1021,7 @@ function QCSubmission() {
 
       {submitted ? (
         <div className="card text-center py-10">
-          <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center text-3xl mx-auto mb-3">ð¤</div>
+          <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center text-3xl mx-auto mb-3">📤</div>
           <h3 className="font-bold text-emerald-700 text-lg">Submission Received!</h3>
           <p className="text-slate-500 text-sm mt-1 mb-5">Your QC submission for <strong>{form.classType}</strong> on <strong>{form.date}</strong> has been sent to HQ for review.</p>
           <button className="btn-secondary" onClick={() => { setSubmitted(false); setForm({ date:'', classType:'Math Explorers', notes:'' }); setFiles([]) }}>
@@ -1060,7 +1060,7 @@ function QCSubmission() {
               onDragLeave={()=>setDragging(false)}
               onDrop={e=>{e.preventDefault();setDragging(false);setFiles(prev=>[...prev,...Array.from(e.dataTransfer.files).map(f=>f.name)])}}
               className={`border-2 border-dashed rounded-xl p-8 text-center transition-all ${dragging?'border-[#1e3a5f] bg-[#1e3a5f]/5':'border-slate-200 hover:border-slate-300'}`}>
-              <div className="text-3xl mb-2">ð·</div>
+              <div className="text-3xl mb-2">📷</div>
               <p className="text-sm font-medium text-slate-700">Drag & drop photos here</p>
               <p className="text-xs text-slate-400 mt-1">or <span className="text-[#1e3a5f] font-medium cursor-pointer hover:underline">browse files</span></p>
               <p className="text-xs text-slate-300 mt-2">PNG, JPG up to 10MB each</p>
@@ -1077,7 +1077,7 @@ function QCSubmission() {
           <div className="flex justify-end">
             <button className={`btn-primary px-8 ${!form.date?'opacity-50 cursor-not-allowed':''}`}
               disabled={!form.date} onClick={handleSubmit}>
-              Submit for HQ Review â
+              Submit for HQ Review →
             </button>
           </div>
         </div>
@@ -1105,7 +1105,7 @@ function QCSubmission() {
                   <td className="px-4 py-3"><StatusBadge status={h.status}/></td>
                   <td className="px-4 py-3">
                     <div className="flex gap-0.5">
-                      {[1,2,3,4,5].map(n=><span key={n} className={`text-base ${n<=h.rating?'text-amber-400':'text-slate-200'}`}>â</span>)}
+                      {[1,2,3,4,5].map(n=><span key={n} className={`text-base ${n<=h.rating?'text-amber-400':'text-slate-200'}`}>★</span>)}
                     </div>
                   </td>
                   <td className="px-4 py-3 text-slate-500 text-xs max-w-xs truncate">{h.comment}</td>
@@ -1119,20 +1119,20 @@ function QCSubmission() {
   )
 }
 
-// âââââââââââââââââââââââââââââââââââââââââââââ
+// ─────────────────────────────────────────────
 // MAIN APP
-// âââââââââââââââââââââââââââââââââââââââââââââ
+// ─────────────────────────────────────────────
 
 const HQ_NAV = [
-  { id: 'analytics', label: 'Network Analytics', icon: 'ð' },
-  { id: 'qc', label: 'QC Review Queue', icon: 'â' },
-  { id: 'messages', label: 'Messages', icon: 'ð¬' },
+  { id: 'analytics', label: 'Network Analytics', icon: '📊' },
+  { id: 'qc', label: 'QC Review Queue', icon: '✅' },
+  { id: 'messages', label: 'Messages', icon: '💬' },
 ]
 
 const F_NAV = [
-  { id: 'training', label: 'Training Academy', icon: 'ð' },
-  { id: 'sop', label: 'SOP Execution', icon: 'ð' },
-  { id: 'qcsubmit', label: 'QC Submission', icon: 'ð¤' },
+  { id: 'training', label: 'Training Academy', icon: '🎓' },
+  { id: 'sop', label: 'SOP Execution', icon: '📋' },
+  { id: 'qcsubmit', label: 'QC Submission', icon: '📤' },
 ]
 
 export default function App() {
@@ -1175,11 +1175,11 @@ export default function App() {
         <div className="flex items-center bg-slate-100 rounded-xl p-1 gap-1">
           <button onClick={() => setPortal('hq')}
             className={`px-4 py-1.5 rounded-lg text-sm font-semibold transition-all ${portal==='hq'?'bg-[#1e3a5f] text-white shadow-sm':'text-slate-500 hover:text-slate-700'}`}>
-            ð¢ HQ Portal
+            🏢 HQ Portal
           </button>
           <button onClick={() => setPortal('franchisee')}
             className={`px-4 py-1.5 rounded-lg text-sm font-semibold transition-all ${portal==='franchisee'?'bg-[#1e3a5f] text-white shadow-sm':'text-slate-500 hover:text-slate-700'}`}>
-            ð« Franchisee Portal
+            🏫 Franchisee Portal
           </button>
         </div>
 
